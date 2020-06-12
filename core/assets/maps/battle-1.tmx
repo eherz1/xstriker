@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="21" height="21" tilewidth="32" tileheight="32" nextobjectid="36">
+ <tileset firstgid="1" name="fantasy" tilewidth="32" tileheight="32">
+  <image source="../spritesheets/fantasy.png" width="256" height="832"/>
+ </tileset>
+ <tileset firstgid="209" name="meta" tilewidth="32" tileheight="32">
+  <image source="../spritesheets/meta.png" width="67" height="34"/>
+  <tile id="0">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="21" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYWBgYBkmmBsJj5pJHcxJRfdxorkTxqeG27hxiBMbZtxo5qC7jxuPHnxmcmJhYxMjxUxquJMW4UmveKdF+sQW1qNmDg8MAMzRCTQ=
+  </data>
+ </layer>
+ <layer name="meta" width="21" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA/uIgFU8NMfPxRM4k3Cz1eKI0rQnqIkceVZgixcbkdm50XccjhEkcXo0ZcEmMmNdxJ7fDEBiiVx6WH2ukTl3sGW94cimZSu5wnBwAAcsFLHQ==
+  </data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="28" name="placements" x="289" y="545" width="93" height="62"/>
+ </objectgroup>
+</map>

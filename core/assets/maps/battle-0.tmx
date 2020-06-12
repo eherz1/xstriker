@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="10">
+ <tileset firstgid="1" name="Fantasy" tilewidth="32" tileheight="32">
+  <image source="../spritesheets/fantasy.png" width="256" height="832"/>
+ </tileset>
+ <tileset firstgid="209" name="Meta Tiles" tilewidth="32" tileheight="32">
+  <image source="../spritesheets/meta.png" width="67" height="34"/>
+  <tile id="0">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA72UOw4AIAhDGRzcvf9d3Q3Utn4GJuW1gYYWEQ3UIAr1Z7wOSmXveCv7lj+Hh2bo8tCf7L3SrvwxPHX+A+ipvHV+Sj/Lz7RUf9WuT/P7g6fmhc0im+eKt8uPw3t9Pxwemz3nFp/e9gnyWYbOQAYAAA==
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="5" name="Spawn 1" x="129" y="513" width="95" height="94"/>
+  <object id="6" name="Spawn 2" x="418" y="33" width="92" height="94"/>
+ </objectgroup>
+ <layer name="Meta" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA7WUMQ4AIAgD/f/v/JGrA5QeKImL1qPRhrV0bWORqvSUTfq/4N2+KK96ww5PaaJz9X+Vr4znVsSb5CnySfPo8KNe5D59U8XL9n7yaF4UT3kg+XfmUYfnaKcaynOz15nF09l+AKw8EiVABgAA
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,45 @@
+{
+    "com.badlogic.gdx.graphics.g2d.BitmapFont": 
+    {
+        "default-font": 
+        {
+            "file": "myFont.fnt"
+        }
+    },
+
+    "com.badlogic.gdx.graphics.Color": 
+    {
+        "black": 
+        {
+            "a": 1,
+            "b": 0,
+            "g": 0,
+            "r": 0
+        },
+
+        "gray": 
+        {
+            "a": 1,
+            "b": 0.5,
+            "g": 0.5,
+            "r": 0.5
+        }
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": 
+    {
+        "default": 
+        {
+            "background": "bg",
+            "font": "default-font",
+            "fontColor": "black"
+        },
+
+        "otherone": 
+        {
+            "background": "bg",
+            "font": "default-font",
+            "fontColor": "gray"
+        }
+    }
+}

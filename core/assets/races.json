@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Human",
+        "strength": 40,
+        "agility": 40,
+        "intellect": 40,
+        "wisdom": 40,
+        "vitality": 40,
+        "charisma": 40,
+        "spritesheet": "spritesheets/races/human.png"
+    }
+]
