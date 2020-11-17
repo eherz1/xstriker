@@ -24,21 +24,22 @@ class ControlsSystem : BaseSystem() {
 
   @Subscribe
   fun processEvent(event: ControllerSystem.ControllerButtonDownEvent) {
-    if (event.buttonCode == IBuffaloController.BUTTON_X)
+    print("Button code ${event.buttonCode}\n")
+    if (event.buttonCode == 4)
       engageRailgun = true
-    if (event.buttonCode == IBuffaloController.BUTTON_L)
+    if (event.buttonCode == 6 || event.buttonCode == 8)
       rotateRailgunCW = true
-    if (event.buttonCode == IBuffaloController.BUTTON_R)
+    if (event.buttonCode == 7 || event.buttonCode == 9)
       rotateRailgunCCW = true
   }
 
   @Subscribe
   fun processEvent(event: ControllerSystem.ControllerButtonUpEvent) {
-    if (event.buttonCode == IBuffaloController.BUTTON_X)
+    if (event.buttonCode == 4)
       engageRailgun = false
-    if (event.buttonCode == IBuffaloController.BUTTON_L)
+    if (event.buttonCode == 6 || event.buttonCode == 8)
       rotateRailgunCW = false
-    if (event.buttonCode == IBuffaloController.BUTTON_R)
+    if (event.buttonCode == 7 || event.buttonCode == 9)
       rotateRailgunCCW = false
   }
 

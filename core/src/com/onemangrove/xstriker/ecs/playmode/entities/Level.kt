@@ -29,51 +29,19 @@ object Level {
           setPosition(32f * 15f, 32f * 32f),
           setYVelocity(scrollSpeed)
       ))
+      //      get("camera",
+      //          setYVelocity(8f)
+      //      ),
   )
 
   fun one(world: World): Operation = sequence(
-      Level.default(world, 16f),
-      delay(2f),
-//      get("camera",
-//          setYVelocity(8f)
-//      ),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(200f, 400f))),
+      Level.default(world, 0f),
       delay(5f),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(200f, 400f))),
-      delay(5f),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(200f, 400f))),
+      Wave.assaultFrigateWaveA(),
+      delay(10f),
+      Wave.assaultFrigateWaveA(),
+      delay(10f),
+      Wave.assaultFrigateWaveA(),
       delay(5f)
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(1f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(1f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(2f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(2f),
-//      delay(4f),
-//      get("camera", setYVelocity(8f)),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(1f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(1f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(4f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(2f),
-//      spawn("enemy", Enemy.frigate()),
-//      delay(2f)
-  )
+    )
 }

@@ -27,8 +27,8 @@ class SetVelocityTowards : SingleUseOperation() {
     override fun act(op: SetVelocityTowards, node: OperationTree) {
       val e1 = op.entityId!!
       val e2 = op.otherEntityId!!
-      val p1 = positionMapper.get(e1)
-      val p2 = positionMapper.get(e2)
+      val p1 = positionMapper.get(e1) ?: return
+      val p2 = positionMapper.get(e2) ?: return
       val magnitude = op.magnitude!!
       val angler = Math.atan2((p2.y - p1.y).toDouble(), (p2.x - p1.x).toDouble())
       val vx = magnitude * Math.cos(angler)

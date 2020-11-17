@@ -18,13 +18,10 @@ class Destroy : SingleUseOperation() {
     @Wire
     private lateinit var worldHolder: WorldHolder
 
-    @Wire
-    private lateinit var parentMapper: ComponentMapper<com.onemangrove.xstriker.ecs.playmode.components.ParentComponent>
-
     override fun act(op: Destroy, node: OperationTree) {
-      var parent = parentMapper.get(op.entityId)
-      parent?.children?.forEach { destroy().register(worldHolder.world, it) }
-      worldHolder.world.delete(op.entityId)
+      val world = worldHolder.world
+      val entityId = op.entityId
+      world.delete(entityId)
     }
   }
 

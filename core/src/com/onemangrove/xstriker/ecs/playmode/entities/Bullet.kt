@@ -27,7 +27,7 @@ object Bullet {
       setVelocityTangentToSource(1f),
       setHealth(1f),
       setBody(8f, 8f),
-      markAsBullet()
+      markBullet()
   )
 
   fun player(): Operation = sequence(

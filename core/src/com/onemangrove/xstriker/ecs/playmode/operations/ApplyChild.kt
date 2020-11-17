@@ -30,9 +30,14 @@ class ApplyChild : SingleUseOperation() {
 
     override fun act(op: ApplyChild, node: OperationTree) {
       val world = worldHolder.world
-      val parent = parentMapper.get(op.entityId)
-      val childId = parent.findChild(childMapper, op.childName!!)!!
-      op.childOperation!!.register(world, childId)
+      val entityId = op.entityId
+      val parent = parentMapper.get(entityId) ?: return
+      val childId = parent.findChild(childMapper, op.childName!!) ?: return
+      // Temporary hack
+      try {
+        op.childOperation!!.register(world, childId)
+      } catch (re: RuntimeException) {
+      }
     }
   }
 

@@ -23,7 +23,7 @@ class SetAnimation : SingleUseOperation() {
     override fun act(op: SetAnimation, node: OperationTree) {
       val entityId = op.entityId
       val animation = op.animation!!
-      val renderable = renderableMapper.get(entityId)
+      val renderable = renderableMapper.get(entityId) ?: return
       renderable.activeAnimationKey = animation
     }
   }

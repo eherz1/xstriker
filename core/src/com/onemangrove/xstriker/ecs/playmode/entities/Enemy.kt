@@ -52,7 +52,7 @@ object Enemy {
       assignAnimation(Animations.MOVING_LEFT, "spritesheets/main.png", 0.25f, arrayListOf(
           AssignAnimation.Frame(0, 0, 32, 32)
       )),
-      assignAnimation(Animations.DEATH, "spritesheets/main.png", 0.075f, arrayListOf(
+      assignAnimation(Animations.DEATH, "spritesheets/main.png", 0.25f, arrayListOf(
           AssignAnimation.Frame(32 * 11, 0, 32, 32),
           AssignAnimation.Frame(32 * 12, 0, 32, 32),
           AssignAnimation.Frame(32 * 13, 0, 32, 32),
@@ -97,7 +97,7 @@ object Enemy {
       assignAnimation(Animations.MOVING_LEFT, "spritesheets/main.png", 0.25f, arrayListOf(
           AssignAnimation.Frame(0, 0, 32, 32)
       )),
-      assignAnimation(Animations.DEATH, "spritesheets/main.png", 0.075f, arrayListOf(
+      assignAnimation(Animations.DEATH, "spritesheets/main.png", 0.1f, arrayListOf(
           AssignAnimation.Frame(32 * 11, 0, 32, 32),
           AssignAnimation.Frame(32 * 12, 0, 32, 32),
           AssignAnimation.Frame(32 * 13, 0, 32, 32),
@@ -121,8 +121,7 @@ object Enemy {
           Gun.burstGun(0f, 0f, 90f, { Bullet.enemy() }),
           trackByTag("player")
       )),
-      setAI("frigate"),
-      Pattern.downwardSine()
+      setAI("frigate")
   )
 
   fun smartBomb(): Operation = sequence(
@@ -142,7 +141,7 @@ object Enemy {
       assignAnimation(Animations.MOVING_LEFT, "spritesheets/main.png", 0.25f, arrayListOf(
           AssignAnimation.Frame(0, 0, 32, 32)
       )),
-      assignAnimation(Animations.DEATH, "spritesheets/main.png", 0.075f, arrayListOf(
+      assignAnimation(Animations.DEATH, "spritesheets/main.png", 0.1f, arrayListOf(
           AssignAnimation.Frame(32 * 11, 0, 32, 32),
           AssignAnimation.Frame(32 * 12, 0, 32, 32),
           AssignAnimation.Frame(32 * 13, 0, 32, 32),

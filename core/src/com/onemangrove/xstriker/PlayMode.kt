@@ -40,10 +40,10 @@ class PlayMode : com.onemangrove.xstriker.GameMode() {
 
     val eventSystem = EventSystem()
 //        val worldSerializationManager = WorldSerializationManager()
-
     world = World(WorldConfigurationBuilder()
 //        .with(MapRenderingSystem()),
         .with(CameraSystem())
+//        .with(WorldConfigurationBuilder.Priority.LOWEST, StarBackgroundRenderingSystem())
         .with(StarBackgroundRenderingSystem())
         .with(RenderingSystem())
 //        .with(CollisionBoxRenderingSystem())
@@ -58,6 +58,7 @@ class PlayMode : com.onemangrove.xstriker.GameMode() {
         .with(TrackingSystem())
         .with(AISystem())
         .with(DeathSystem())
+        .with(ReaperSystem())
         .with(LevelSystem())
         .with(OverlaySystem())
         .build()

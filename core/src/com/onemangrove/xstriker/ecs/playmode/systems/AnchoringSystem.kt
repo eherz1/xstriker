@@ -17,7 +17,7 @@ class AnchoringSystem : IteratingSystem(Aspect.all(AnchoredComponent::class.java
   override fun process(entityId: Int) {
     val anchored = anchoredMapper.get(entityId)
     val anchoredToEntity = anchored.anchoredToId!!
-    val anchoredToPosition = positionMapper.get(anchoredToEntity)
+    val anchoredToPosition = positionMapper.get(anchoredToEntity) ?: return
     val position = positionMapper.get(entityId)
     position.x = anchoredToPosition.x
     position.y = anchoredToPosition.y

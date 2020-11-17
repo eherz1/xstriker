@@ -24,9 +24,9 @@ class SetPositionEqualToSource : SingleUseOperation() {
 
     override fun act(op: SetPositionEqualToSource, node: OperationTree) {
       val entityId = op.entityId
-      val source = sourceMapper.get(entityId)
+      val source = sourceMapper.get(entityId) ?: return
       val otherEntityId = source.id!!
-      val otherPosition = positionMapper.get(otherEntityId)
+      val otherPosition = positionMapper.get(otherEntityId) ?: return
       val position = positionMapper.get(entityId) ?: return
       position.x = otherPosition.x
       position.y = otherPosition.y
