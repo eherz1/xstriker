@@ -1,30 +1,29 @@
 package com.onemangrove.xstriker.ecs.playmode.entities
 
+import com.badlogic.gdx.Gdx
 import com.onemangrove.xstriker.ecs.playmode.operations.setPosition
 import com.onemangrove.xstriker.ecs.playmode.operations.spawn
 import ecs.playmode.entities.Enemy
 import se.feomedia.orion.OperationFactory.sequence
 
 object Wave {
-  fun smartBombWaveA() = sequence(
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(100f, 600f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(100f, 500f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(100f, 400f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(100f, 300f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(100f, 200f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(800f, 600f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(800f, 500f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(800f, 400f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(800f, 300f))),
-      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(800f, 200f)))
+
+
+  fun smartBombWaveA(x: Float, y: Float) = sequence(
+      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(x, y))),
+      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(x - 100, y - 25))),
+      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(x + 100, y - 25))),
+      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(x - 200, y - 50))),
+      spawn("enemy", sequence(Enemy.smartBomb(), setPosition(x + 200, y - 50)))
   )
 
-  fun assaultFrigateWaveA() = sequence(
-    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(200f, 400f))),
-    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(300f, 400f))),
-    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(400f, 400f))),
-    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(500f, 400f))),
-    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(600f, 400f))),
-    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(700f, 400f)))
+  fun assaultFrigateWaveA(x: Float, y: Float) = sequence(
+      spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x, y))),
+      spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x - 100, y))),
+    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x + 100, y))),
+    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x - 200, y))),
+    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x + 200, y)))
+//    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x - 300, y))),
+//    spawn("enemy", sequence(Enemy.assaultFrigate(), setPosition(x + 300, y)))
   )
 }

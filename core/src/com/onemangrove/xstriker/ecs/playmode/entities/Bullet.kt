@@ -43,7 +43,7 @@ object Bullet {
 
   fun enemy(): Operation = sequence(
       default(),
-      setVelocityTangentToSource(5f),
+      setVelocityTangentToSource(7f),
       assignAnimation(Animations.STILL, "spritesheets/main.png", 0.025f, arrayListOf(
           AssignAnimation.Frame(32 * 8, 0, 32, 32),
           AssignAnimation.Frame(32 * 9, 0, 32, 32),

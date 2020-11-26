@@ -5,12 +5,11 @@ import com.artemis.ComponentMapper
 import com.artemis.annotations.Wire
 import com.artemis.managers.TagManager
 import com.artemis.systems.IteratingSystem
-import com.onemangrove.xstriker.ecs.playmode.components.MapComponent
 import com.onemangrove.xstriker.ecs.playmode.components.PositionComponent
 import com.onemangrove.xstriker.ecs.playmode.components.VelocityComponent
+import com.onemangrove.xstriker.ecs.playmode.utils.isOffscreen
 
-class MotionSystem : IteratingSystem(Aspect.all(com.onemangrove.xstriker.ecs.playmode.components.PositionComponent::class.java, com.onemangrove.xstriker.ecs.playmode.components.VelocityComponent::class.java)) {
-
+class MotionSystem : IteratingSystem(Aspect.all(PositionComponent::class.java, VelocityComponent::class.java)) {
   @Wire
   private lateinit var positionMapper: ComponentMapper<com.onemangrove.xstriker.ecs.playmode.components.PositionComponent>
 
@@ -26,9 +25,9 @@ class MotionSystem : IteratingSystem(Aspect.all(com.onemangrove.xstriker.ecs.pla
   @Wire
   private lateinit var cameraSystem: CameraSystem
 
-  override fun process(entityId: Int) {
-    val position = positionMapper.get(entityId)
-    val velocity = velocityMapper.get(entityId)
+  override fun process(e: Int) {
+    val position = positionMapper.get(e)
+    val velocity = velocityMapper.get(e)
     val px = position.x
     val py = position.y
     val npx = px + velocity.vx
@@ -36,9 +35,9 @@ class MotionSystem : IteratingSystem(Aspect.all(com.onemangrove.xstriker.ecs.pla
 
     val playerE = tagManager.getEntityId("player")
 
-    if (entityId == playerE) {
+    if (e == playerE) {
+      System.out.printf("Is player!!")
       val mapE = tagManager.getEntity("map")
-
       if (mapE != null) {
         val map = mapMapper.get(mapE)
         if (map != null) {
@@ -81,10 +80,13 @@ class MotionSystem : IteratingSystem(Aspect.all(com.onemangrove.xstriker.ecs.pla
 
         if (abort) return
       }
+      if (!isOffscreen(position, 1f)) {
+        position.x = npx
+        position.y = npy
+      }
+    } else {
+      position.x = npx
+      position.y = npy
     }
-
-    position.x = npx
-    position.y = npy
   }
-
 }

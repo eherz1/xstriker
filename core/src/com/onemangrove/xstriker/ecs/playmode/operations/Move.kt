@@ -3,6 +3,7 @@ package com.onemangrove.xstriker.ecs.playmode.operations
 import com.artemis.ComponentMapper
 import com.artemis.annotations.Wire
 import com.onemangrove.xstriker.ecs.playmode.components.PositionComponent
+import com.onemangrove.xstriker.ecs.playmode.utils.isOffscreen
 import se.feomedia.orion.Operation
 import se.feomedia.orion.OperationFactory.operation
 import se.feomedia.orion.OperationTree
@@ -22,8 +23,10 @@ class Move : SingleUseOperation() {
 
     override fun act(op: Move, node: OperationTree) {
       val position = positionMapper.get(op.entityId)
-      position.x += op.dx
-      position.y += op.dy
+      if (!isOffscreen(position.x + op.dx, position.y + op.dy)) {
+        position.x += op.dx
+        position.y += op.dy
+      }
     }
   }
 

@@ -24,7 +24,7 @@ class ControlsSystem : BaseSystem() {
 
   @Subscribe
   fun processEvent(event: ControllerSystem.ControllerButtonDownEvent) {
-    print("Button code ${event.buttonCode}\n")
+//    print("Button code ${event.buttonCode}\n")
     if (event.buttonCode == 4)
       engageRailgun = true
     if (event.buttonCode == 6 || event.buttonCode == 8)
@@ -45,9 +45,7 @@ class ControlsSystem : BaseSystem() {
 
   @Subscribe
   fun processEvent(event: ControllerSystem.ControllerXAxisEvent) {
-    var player = tagManager.getEntity("player")
-    if (player == null)
-      return
+    var player = tagManager.getEntity("player") ?: return
     val magnitude = event.magnitude
     if (magnitude < 0f)
       engageEngineXN = true

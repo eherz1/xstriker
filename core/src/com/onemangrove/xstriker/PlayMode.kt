@@ -44,7 +44,7 @@ class PlayMode : com.onemangrove.xstriker.GameMode() {
 //        .with(MapRenderingSystem()),
         .with(CameraSystem())
 //        .with(WorldConfigurationBuilder.Priority.LOWEST, StarBackgroundRenderingSystem())
-        .with(StarBackgroundRenderingSystem())
+//        .with(StarBackgroundRenderingSystem())
         .with(RenderingSystem())
 //        .with(CollisionBoxRenderingSystem())
         .with(tagManager)
@@ -60,7 +60,8 @@ class PlayMode : com.onemangrove.xstriker.GameMode() {
         .with(DeathSystem())
         .with(ReaperSystem())
         .with(LevelSystem())
-        .with(OverlaySystem())
+        .with(OutOfBoundsSystem())
+//        .with(OverlaySystem())
         .build()
 //        .setSystem(worldSerializationManager)
         .register(assetManager)

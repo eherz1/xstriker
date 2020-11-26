@@ -3,6 +3,7 @@ package com.onemangrove.xstriker.ecs.playmode.entities
 import com.artemis.Archetype
 import com.artemis.ArchetypeBuilder
 import com.artemis.World
+import com.badlogic.gdx.Gdx
 import com.onemangrove.xstriker.ecs.playmode.components.LevelComponent
 import com.onemangrove.xstriker.ecs.playmode.operations.*
 import ecs.playmode.entities.Enemy
@@ -37,11 +38,20 @@ object Level {
   fun one(world: World): Operation = sequence(
       Level.default(world, 0f),
       delay(5f),
-      Wave.assaultFrigateWaveA(),
-      delay(10f),
-      Wave.assaultFrigateWaveA(),
-      delay(10f),
-      Wave.assaultFrigateWaveA(),
-      delay(5f)
-    )
+      Wave.assaultFrigateWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height - 100f),
+      delay(7f),
+      Wave.smartBombWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height + 50f),
+      delay(7f),
+      Wave.assaultFrigateWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height - 100f),
+      delay(7f),
+      Wave.smartBombWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height + 50f),
+      delay(7f),
+      Wave.assaultFrigateWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height - 100f),
+      delay(3f),
+      Wave.smartBombWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height + 50f),
+      delay(3f),
+      Wave.smartBombWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height + 50f),
+      delay(3f),
+      Wave.smartBombWaveA(Gdx.graphics.width / 2f, Gdx.graphics.height + 50f)
+  )
 }

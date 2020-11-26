@@ -47,7 +47,7 @@ class OverlaySystem() : BaseSystem() {
         .toString()
 
     spriteBatch.begin()
-    font.draw(spriteBatch, overlay, 12f, Gdx.graphics.getHeight() - 12f)
+    font.draw(spriteBatch, overlay, 12f, Gdx.graphics.height - 12f)
     spriteBatch.end()
   }
 }
