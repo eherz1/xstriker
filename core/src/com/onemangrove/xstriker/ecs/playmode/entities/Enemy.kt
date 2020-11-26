@@ -32,7 +32,8 @@ object Enemy {
       setTag(String.format("enemy%s", Enemy.count++)),
       setBody(bodyWidth, bodyHeight),
       setHealth(health),
-      setMaxHealth(maxHealth)
+      setMaxHealth(maxHealth),
+      setTeam("enemy")
   )
 
   fun frigate(): Operation = sequence(

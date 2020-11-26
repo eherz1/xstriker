@@ -29,6 +29,9 @@ class CollisionSystem : IteratingSystem(Aspect.all(PositionComponent::class.java
   @Wire
   private lateinit var healthMapper: ComponentMapper<HealthComponent>
 
+  @Wire
+  private lateinit var teamMapper: ComponentMapper<TeamComponent>
+
   private fun damage(e: Int, d: Float) {
     var healthComponent = healthMapper.get(e)
     healthComponent.currentHealth -= d
@@ -78,6 +81,15 @@ class CollisionSystem : IteratingSystem(Aspect.all(PositionComponent::class.java
   }
 
   /**
+   * Don't collide objects on the same team.
+   */
+  private fun isCollideWithTeam(e1: Int, e2: Int): Boolean {
+    val t1 = teamMapper.get(e1) ?: return false
+    val t2 = teamMapper.get(e2) ?: return false
+    return t1.name === t2.name
+  }
+
+  /**
    * Don't collide with the parent objects of the source, either.
    */
   private fun isCollideWithSourceParent(e1: Int, e2: Int): Boolean {
@@ -91,8 +103,11 @@ class CollisionSystem : IteratingSystem(Aspect.all(PositionComponent::class.java
       val t1 = tagManager.getTag(e1) ?: ""
       val t2 = tagManager.getTag(e2) ?: ""
 
-      // Don't collide projectiles with their source
-      if (isCollideWithSelf(e1, e2) || isCollideWithSource(e1, e2) || isCollideWithSourceParent(e1, e2)) continue
+      if (isCollideWithSelf(e1, e2) ||
+          isCollideWithSource(e1, e2) ||
+          isCollideWithSourceParent(e1, e2) ||
+          isCollideWithTeam(e1, e2))
+        continue
 
       val h1 = healthMapper.get(e1)
       val h2 = healthMapper.get(e2)
