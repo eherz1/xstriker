@@ -41,7 +41,7 @@ class AISystem : IteratingSystem(Aspect.all(AIComponent::class.java)) {
   fun smartBombAI(e: Int) {
     val playerId = tagManager.getEntityId("player")
     if (playerId < 0) return
-    operations.execute(e, setVelocityTowards(playerId, 2f))
+    operations.execute(e, setVelocityTowards(playerId, 4f))
   }
 
   override fun process(e: Int) {

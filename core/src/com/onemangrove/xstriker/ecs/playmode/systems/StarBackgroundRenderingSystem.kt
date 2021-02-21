@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.onemangrove.xstriker.ecs.playmode.utils.isOffscreen
 
 
 class StarBackgroundRenderingSystem : BaseSystem() {
@@ -51,6 +52,7 @@ class StarBackgroundRenderingSystem : BaseSystem() {
   private fun drawStar(pixmap: Pixmap, star: Star, color: Int, offsetX: Int, offsetY: Int) {
     val x = star.x + offsetX
     val y = star.y + offsetY
+    if (isOffscreen(x.toFloat(), y.toFloat())) return
     when (star.type) {
       StarType.SMALL -> {
         pixmap.drawPixel(x, y, color)
@@ -93,7 +95,7 @@ class StarBackgroundRenderingSystem : BaseSystem() {
   var frameCounter = 0
   val frameDivisor = 1
   var xPos = 0
-  var yPos = 0
+  var yPos = Gdx.graphics.height * 10
 
   override fun processSystem() {
     frameCounter += 1
@@ -101,7 +103,7 @@ class StarBackgroundRenderingSystem : BaseSystem() {
       texture = computeTexture(xPos, yPos)
       frameCounter = 0
     }
-    yPos -= 8
+    yPos += 8
     renderTexture()
   }
 }

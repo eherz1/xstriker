@@ -41,7 +41,12 @@ class AssignAnimation : SingleUseOperation() {
 
     override fun act(op: AssignAnimation, node: OperationTree) {
       val renderable = renderableMapper.get(op.entityId)
-      val spritesheet = assetManager.get(op.resource!!, Texture::class.java)
+      val resource = op.resource!!
+      if (!assetManager.isLoaded(resource)) {
+        assetManager.load(resource, Texture::class.java)
+        assetManager.finishLoading()
+      }
+      val spritesheet = assetManager.get(resource, Texture::class.java)
       val textures = op.frames!!.map { TextureRegion(spritesheet, it.x, it.y, it.w, it.h) }
       val animation = Animation<TextureRegion>(op.duration, Array<TextureRegion>(textures.toTypedArray()))
       val looping = op.looping!!

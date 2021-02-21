@@ -6,7 +6,6 @@ import com.artemis.managers.TagManager
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
-import com.badlogic.gdx.controllers.Controller
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.maps.tiled.TiledMap
@@ -34,7 +33,7 @@ class PlayMode : com.onemangrove.xstriker.GameMode() {
     assetManager = AssetManager(InternalFileHandleResolver())
     assetManager.setLoader(TiledMap::class.java, TmxMapLoader(InternalFileHandleResolver()))
 
-    archetypeManager = com.onemangrove.xstriker.ArchetypeManager()
+    archetypeManager = ArchetypeManager()
     operationsHelper = OperationsHelper()
     tagManager = TagManager()
 
@@ -77,6 +76,9 @@ class PlayMode : com.onemangrove.xstriker.GameMode() {
 //        worldSerializationManager.setSerializer(JsonArtemisSerializer(world))
 
     assetManager.load("spritesheets/main.png", Texture::class.java)
+    assetManager.load("spritesheets/ship.png", Texture::class.java)
+    assetManager.load("spritesheets/rail-cannon.png", Texture::class.java)
+    assetManager.load("spritesheets/pulse-cannon.png", Texture::class.java)
     assetManager.load("maps/test-0.tmx", TiledMap::class.java)
     assetManager.finishLoading()
 

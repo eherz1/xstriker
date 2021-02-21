@@ -31,13 +31,26 @@ object Gun {
       setRotation(rotation)
   )
 
+//  fun railGun(offsetX: Float, offsetY: Float, rotation: Float, bulletFactory: () -> Operation): Operation = sequence(
+//      default(offsetX, offsetY, rotation),
+//      assignAnimation(Animations.STILL, "spritesheets/main.png", 1f, arrayListOf(
+//          AssignAnimation.Frame(32 * 3, 0, 32, 32)
+//      )),
+//      assignAnimation(Animations.FIRING_LOW, "spritesheets/main.png", 1f, arrayListOf(
+//          AssignAnimation.Frame(32 * 3, 0, 32, 32)
+//      )),
+//      setAnimation(Animations.STILL),
+//      addAction("fire", ActionsComponent.Action(100) {
+//        spawn("bullet", bulletFactory())
+//      })
+//  )
   fun railGun(offsetX: Float, offsetY: Float, rotation: Float, bulletFactory: () -> Operation): Operation = sequence(
       default(offsetX, offsetY, rotation),
-      assignAnimation(Animations.STILL, "spritesheets/main.png", 1f, arrayListOf(
-          AssignAnimation.Frame(32 * 3, 0, 32, 32)
+      assignAnimation(Animations.STILL, "sprites/rail-gun.png", 1f, arrayListOf(
+          AssignAnimation.Frame(0, 0, 24, 24)
       )),
-      assignAnimation(Animations.FIRING_LOW, "spritesheets/main.png", 1f, arrayListOf(
-          AssignAnimation.Frame(32 * 3, 0, 32, 32)
+      assignAnimation(Animations.FIRING_LOW, "sprites/rail-gun.png", 1f, arrayListOf(
+          AssignAnimation.Frame(0, 0, 24, 24)
       )),
       setAnimation(Animations.STILL),
       addAction("fire", ActionsComponent.Action(100) {
@@ -67,5 +80,34 @@ object Gun {
           spawn("bullet", bulletFactory())
         )
       })
+  )
+
+  fun pulseGun(
+        offsetX: Float,
+        offsetY: Float,
+        rotation: Float,
+        bulletFactory: () -> Operation): Operation = sequence(
+      default(offsetX, offsetY, rotation),
+      assignAnimation(Animations.STILL, "sprites/pulse-gun.png", 1f, arrayListOf(
+          AssignAnimation.Frame(0, 0, 24, 24)
+      )),
+      assignAnimation(Animations.FIRING_LOW, "sprites/pulse-gun.png", 1f, arrayListOf(
+          AssignAnimation.Frame(0, 0, 24, 24)
+      )),
+      setAnimation(Animations.STILL),
+      addAction("charge", ActionsComponent.Action(100) {
+        sequence(
+            delay(0.05f)
+        )
+      })
+//      addAction("fire", ActionsComponent.Action(100) {
+//        sequence(
+//            spawn("bullet", bulletFactory()),
+//            delay(.05f),
+//            spawn("bullet", bulletFactory()),
+//            delay(.05f),
+//            spawn("bullet", bulletFactory())
+//        )
+//      })
   )
 }

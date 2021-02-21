@@ -17,7 +17,7 @@ fun setAI(aiType: String): Operation {
 class SetAI : SingleUseOperation() {
   class Executor : SingleUseOperation.SingleUseExecutor<SetAI>() {
     @Wire
-    private lateinit var aiMapper: ComponentMapper<com.onemangrove.xstriker.ecs.playmode.components.AIComponent>
+    private lateinit var aiMapper: ComponentMapper<AIComponent>
 
     override fun act(op: SetAI, node: OperationTree) {
       val entityId = op.entityId!!
